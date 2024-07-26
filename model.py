@@ -65,4 +65,7 @@ class LLMModel:
         engine = sentence_index.as_query_engine(
             similarity_top_k=similarity_top_k, node_postprocessors=[postproc, rerank]
         )
+        memory = ChatMemoryBuffer.from_defaults(token_limit=4000)
+        chat_mode="context",
+        memory=memory
         return engine
